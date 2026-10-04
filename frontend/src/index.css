@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    @apply bg-paper text-ink font-sans;
+    background-image:
+      linear-gradient(to right, theme("colors.grid") 1px, transparent 1px),
+      linear-gradient(to bottom, theme("colors.grid") 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  :focus-visible { outline: 3px solid #3A63B8; outline-offset: 2px; border-radius: 6px; }
+  code, pre { @apply font-mono; }
+}
+
+@layer components {
+  .card { @apply bg-white/95 border border-rule rounded-xl shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-ink text-paper hover:bg-ink-soft; }
+  .btn-marker { @apply btn bg-marker text-ink hover:brightness-95; }
+  .btn-ghost { @apply btn border border-rule bg-white text-ink hover:bg-grid; }
+  .input { @apply w-full rounded-lg border border-rule bg-white px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-progress focus:outline-none; }
+  .label { @apply mb-1 block text-sm font-bold text-ink; }
+  .highlight { background: linear-gradient(transparent 55%, theme("colors.marker.DEFAULT") 55%, theme("colors.marker.DEFAULT") 90%, transparent 90%); }
+  .prose-tutor h3 { @apply mt-4 mb-1 text-base font-bold; }
+  .prose-tutor p { @apply my-2 leading-relaxed; }
+  .prose-tutor ul, .prose-tutor ol { @apply my-2 ml-5 space-y-1; }
+  .prose-tutor ul { @apply list-disc; }
+  .prose-tutor ol { @apply list-decimal; }
+  .prose-tutor pre { @apply my-3 overflow-x-auto rounded-lg bg-ink p-3 text-[13px] leading-relaxed text-paper; }
+  .prose-tutor code { @apply rounded bg-grid px-1 py-0.5 text-[13px]; }
+  .prose-tutor pre code { @apply bg-transparent p-0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
